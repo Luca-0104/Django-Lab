@@ -2,18 +2,18 @@ from django.db import models
 
 
 class Order(models.Model):
-    STATUS_PENDING = 'P'
-    STATUS_COMPLETE = 'C'
-    STATUS_FAILED = 'F'
+    PAYMENT_STATUS_PENDING = 'P'
+    PAYMENT_STATUS_COMPLETE = 'C'
+    PAYMENT_STATUS_FAILED = 'F'
 
-    STATUS_CHOICES = [
-        (STATUS_PENDING, "Pending"),
-        (STATUS_COMPLETE, "Complete"),
-        (STATUS_FAILED, "Failed")
+    PAYMENT_STATUS_CHOICES = [
+        (PAYMENT_STATUS_PENDING, "Pending"),
+        (PAYMENT_STATUS_COMPLETE, "Complete"),
+        (PAYMENT_STATUS_FAILED, "Failed")
     ]
 
     place_at = models.DateTimeField(auto_now=True)
-    payment_status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=STATUS_PENDING)
+    payment_status = models.CharField(max_length=1, choices=PAYMENT_STATUS_CHOICES, default=PAYMENT_STATUS_PENDING)
 
 
 class Customer(models.Model):
