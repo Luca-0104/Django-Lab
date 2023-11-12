@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Order(models.Model):
     PAYMENT_STATUS_PENDING = 'P'
     PAYMENT_STATUS_COMPLETE = 'C'
@@ -41,3 +42,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
+
+
+class Address(models.Model):
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    # one to one relation with Customer
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True)
