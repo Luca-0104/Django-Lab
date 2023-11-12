@@ -7,7 +7,10 @@ class Promotion(models.Model):
 
 
 class Collection(models.Model):
-    title = models.CharField(max_length=255)    
+    title = models.CharField(max_length=255)
+    # (use str Class name only when you have to)
+    # solve the cycle relation ship using related_name
+    featured_product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, related_name='+')
 
 
 class Cart(models.Model):
